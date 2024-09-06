@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --text-color: #333;
-            --bg-color: #ecf0f1;
+            --primary-color: #1a237e; /* Deep Blue */
+            --secondary-color: #4a148c; /* Deep Purple */
+            --accent-color: #ffc107; /* Amber */
+            --text-color: #333333; /* Dark Gray */
+            --bg-color: #f5f5f5; /* Light Gray */
+            --white: #ffffff;
         }
 
         * {
@@ -37,7 +39,7 @@
         /* Header Styles */
         header {
             background-color: var(--primary-color);
-            color: #fff;
+            color: var(--white);
             padding: 20px 0;
             position: fixed;
             width: 100%;
@@ -71,13 +73,13 @@
         }
 
         .nav-links a {
-            color: #fff;
+            color: var(--white);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--secondary-color);
+            color: var(--accent-color);
         }
 
         /* Hero Section Styles */
@@ -87,8 +89,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/random/1920x1080?technology') no-repeat center center/cover;
-            color: #fff;
+            background: linear-gradient(rgba(26, 35, 126, 0.7), rgba(74, 20, 140, 0.7)), url('https://source.unsplash.com/random/1920x1080?technology') no-repeat center center/cover;
+            color: var(--white);
         }
 
         .hero-content h1 {
@@ -106,18 +108,19 @@
 
         .btn {
             display: inline-block;
-            background-color: var(--secondary-color);
-            color: #fff;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s ease;
             animation: fadeInUp 1s ease 1s;
             animation-fill-mode: both;
+            font-weight: bold;
         }
 
         .btn:hover {
-            background-color: #2980b9;
+            background-color: #ffd54f;
         }
 
         /* Section Styles */
@@ -129,6 +132,7 @@
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 40px;
+            color: var(--secondary-color);
         }
 
         /* About Section Styles */
@@ -161,7 +165,7 @@
         }
 
         .skill-card {
-            background-color: #fff;
+            background-color: var(--white);
             border-radius: 10px;
             padding: 20px;
             margin: 10px;
@@ -189,7 +193,7 @@
         }
 
         .project-card {
-            background-color: #fff;
+            background-color: var(--white);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -207,6 +211,7 @@
 
         .project-content h3 {
             margin-bottom: 10px;
+            color: var(--secondary-color);
         }
 
         /* Contact Section Styles */
@@ -222,6 +227,7 @@
         .form-group label {
             display: block;
             margin-bottom: 5px;
+            color: var(--secondary-color);
         }
 
         .form-group input,
@@ -230,6 +236,12 @@
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
         }
 
         /* Animations */
