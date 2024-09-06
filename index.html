@@ -2,200 +2,429 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Josten S Cheeran - AI & Data Science Graduate</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josten S Cheeran - AI & Data Science Graduate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --bg-color: #ecf0f1;
+        }
 
-  <style>
-    /* ... (keep existing styles) ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Additional styles for new sections */
-    .education-section, .experience-section, .certifications-section {
-      padding: 50px 0;
-    }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
 
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .resume-item {
-      margin-bottom: 30px;
-    }
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-    .resume-item h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
+        header.sticky {
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-    .resume-item .subheading {
-      font-size: 1.1rem;
-      color: #6c757d;
-      margin-bottom: 10px;
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .resume-item ul {
-      padding-left: 20px;
-    }
-  </style>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/random/1920x1080?technology') no-repeat center center/cover;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            animation: fadeInUp 1s ease 1s;
+            animation-fill-mode: both;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* About Section Styles */
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-img {
+            flex: 1;
+            margin-right: 40px;
+        }
+
+        .about-img img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        /* Skills Section Styles */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .skill-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        /* Projects Section Styles */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .skill-card {
+                width: calc(50% - 20px);
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <!-- Sticky Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#home">Josten S Cheeran</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#education">Education</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#experience">Experience</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <header>
+        <nav class="container">
+            <div class="logo">Josten S Cheeran</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section id='about' class="about-section">
-    <div class="container">
-      <h2>About</h2>
-      <img src="images/about/1.jpg" alt="Josten S Cheeran">
-      <p>Hello! I'm Josten S Cheeran, an AI and Data Science Graduate with a passion for transforming data into actionable insights. With hands-on experience as an LLM Engineer Intern at yoopIQ and a Full Stack Developer Intern at ZayoGro, I've developed advanced machine learning algorithms, improved project efficiencies, and enhanced user experiences.</p>
-      <p>I excel in tools like Python, SQL, Machine Learning, Natural Language Processing, and Docker. I've successfully led projects such as a network intrusion detection system that achieved 99% accuracy. In addition to my technical skills, I have a strong foundation in communication, teamwork, and leadership.</p>
-      <p>I'm always eager to learn and grow, and I actively share knowledge within the global data and analytics community. Let's harness the power of data together!</p>
-    </div>
-  </section>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Josten S Cheeran</h1>
+            <p>AI & Data Science Graduate | Machine Learning Enthusiast</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
 
-  <section id="education" class="education-section bg-light">
-    <div class="container">
-      <h2 class="section-title text-center">Education</h2>
-      <div class="resume-item">
-        <h3>B.Sc. Online in Data Science</h3>
-        <div class="subheading">Indian Institute of Technology, Madras • Remote</div>
-        <p>GPA: 6.33 | 01/2022 - 06/2025</p>
-      </div>
-      <div class="resume-item">
-        <h3>B.Tech in AI & Data Science</h3>
-        <div class="subheading">Jyothi Engineering College • Thrissur</div>
-        <p>GPA: 7.7 | 08/2020 - 05/2024</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience" class="experience-section">
-    <div class="container">
-      <h2 class="section-title text-center">Work Experience</h2>
-      <div class="resume-item">
-        <h3>LLM Engineer Intern</h3>
-        <div class="subheading">yoopIQ • Remote</div>
-        <p>01/2024 - 03/2024</p>
-        <ul>
-          <li>Identified and resolved 2 engineering issues, improving overall project efficiency in 2 months</li>
-        </ul>
-      </div>
-      <div class="resume-item">
-        <h3>Full Stack Dev Intern</h3>
-        <div class="subheading">ZayoGro</div>
-        <p>05/2023 - 12/2023</p>
-        <ul>
-          <li>Collaborated with the team to successfully deliver the project in 8 months, improving overall team productivity and efficiency</li>
-          <li>Contributed to the development of CulturalTest with senior consultants and software developers, leading to a 10% improvement in application performance and user satisfaction</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section (Keep existing content, update as needed) -->
-
-  <!-- Skills Section (Update with skills from resume) -->
-  <section id="skills" class="skills-section bg-white">
-    <div class="container">
-      <h2 class="section-title text-center">Skills</h2>
-      <div class="row">
-        <!-- Add skills from resume -->
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img src="images/skills/python.png" class="card-img-top" alt="Python">
-            <div class="card-body">
-              <h5 class="card-title">Python</h5>
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://source.unsplash.com/random/400x400?portrait" alt="Josten S Cheeran">
+                </div>
+                <div class="about-text">
+                    <p>Hello! I'm Josten S Cheeran, an AI and Data Science Graduate with a passion for transforming data into actionable insights. With hands-on experience as an LLM Engineer Intern at yoopIQ and a Full Stack Developer Intern at ZayoGro, I've developed advanced machine learning algorithms, improved project efficiencies, and enhanced user experiences.</p>
+                    <p>I excel in tools like Python, SQL, Machine Learning, Natural Language Processing, and Docker. I've successfully led projects such as a network intrusion detection system that achieved 99% accuracy. In addition to my technical skills, I have a strong foundation in communication, teamwork, and leadership.</p>
+                    <p>I'm always eager to learn and grow, and I actively share knowledge within the global data and analytics community. Let's harness the power of data together!</p>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img src="images/skills/machine-learning.png" class="card-img-top" alt="Machine Learning">
-            <div class="card-body">
-              <h5 class="card-title">Machine Learning</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img src="images/skills/nlp.png" class="card-img-top" alt="Natural Language Processing">
-            <div class="card-body">
-              <h5 class="card-title">Natural Language Processing</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img src="images/skills/docker.png" class="card-img-top" alt="Docker">
-            <div class="card-body">
-              <h5 class="card-title">Docker</h5>
-            </div>
-          </div>
-        </div>
-        <!-- Add more skills as needed -->
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="certifications" class="certifications-section bg-light">
-    <div class="container">
-      <h2 class="section-title text-center">Certifications</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="resume-item">
-            <h3>Introduction to Cybersecurity</h3>
-            <div class="subheading">Station X</div>
-          </div>
+    <section id="skills" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>NLP</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-docker"></i>
+                    <h3>Docker</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>SQL</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Data Analysis</h3>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-          <div class="resume-item">
-            <h3>OpenCV fundamentals</h3>
-            <div class="subheading">ShapeAI</div>
-          </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://source.unsplash.com/random/400x300?technology')"></div>
+                    <div class="project-content">
+                        <h3>Network Intrusion Detection</h3>
+                        <p>Developed a system using deep learning and explainable AI, achieving 99% accuracy in classifying network connections.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://source.unsplash.com/random/400x300?agriculture')"></div>
+                    <div class="project-content">
+                        <h3>Brown Plant Hopper Detection</h3>
+                        <p>Created a CNN model for detecting Brown Plant Hopper in rice crops, streamlining the diagnostic process for farmers.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://source.unsplash.com/random/400x300?cryptocurrency')"></div>
+                    <div class="project-content">
+                        <h3>Crypto Trading Assistant</h3>
+                        <p>Developed an automated cryptocurrency trading bot using R programming and Windows Scheduler.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Me Section (Keep existing content) -->
+    <section id="contact" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
 
-  <!-- Bootstrap JS and dependencies (jQuery and Popper) -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.5/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Sticky Header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form Submission (you'll need to implement server-side handling)
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            form.reset();
+        });
+
+        // Add animation to elements when they come into view
+        const animateOnScroll = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(animateOnScroll, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.skill-card, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 
 </html>
