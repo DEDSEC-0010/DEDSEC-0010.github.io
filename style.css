@@ -71,12 +71,26 @@ nav {
 /* Hero Section Styles */
 .hero {
     height: 100vh;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(26, 35, 126, 0.7), rgba(74, 20, 140, 0.7)), url('https://source.unsplash.com/random/1920x1080?technology') no-repeat center center/cover;
     color: var(--white);
+    overflow: hidden;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
@@ -158,7 +172,14 @@ nav {
     text-align: center;
     width: 200px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.skill-card.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .skill-card:hover {
@@ -183,6 +204,14 @@ nav {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.project-card.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .project-img {
@@ -240,6 +269,48 @@ nav {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Theme Switcher Styles */
+.theme-switcher {
+    cursor: pointer;
+}
+
+.theme-switcher i {
+    font-size: 1.5rem;
+    color: var(--white);
+    transition: color 0.3s ease;
+}
+
+.theme-switcher i:hover {
+    color: var(--accent-color);
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --primary-color: #0d1117;
+    --secondary-color: #161b22;
+    --accent-color: #58a6ff;
+    --text-color: #c9d1d9;
+    --bg-color: #010409;
+    --white: #ffffff;
+}
+
+body.dark-theme header {
+    background-color: var(--secondary-color);
+}
+
+body.dark-theme .skill-card,
+body.dark-theme .project-card {
+    background-color: var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group textarea {
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+    color: var(--text-color);
 }
 
 /* Responsive Design */
