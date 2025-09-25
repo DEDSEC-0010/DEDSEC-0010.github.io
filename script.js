@@ -1,164 +1,124 @@
-// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('input');
+    const output = document.getElementById('output');
+    const terminal = document.getElementById('terminal');
 
-// Initialize Particles.js
-particlesJS('particles-js', {
-  "particles": {
-    "number": {
-      "value": 80,
-      "density": {
-        "enable": true,
-        "value_area": 800
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      }
-    },
-    "opacity": {
-      "value": 0.5,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 3,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 6,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "repulse"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 400,
-        "line_linked": {
-          "opacity": 1
+    const commands = {
+        help: () => `
+Available commands:
+  <span class="command">whoami</span>      - Professional summary
+  <span class="command">skills</span>      - Technical skill set
+  <span class="command">experience</span>  - Work history
+  <span class="command">projects</span>    - Key project highlights
+  <span class="command">education</span>   - Education and certifications
+  <span class="command">contact</span>     - Get in touch
+  <span class="command">clear</span>       - Clear the terminal
+        `,
+        whoami: () => `
+<span class="section-title">Professional Summary</span>
+Cloud ML Engineer and Data Science Solutions Specialist with expertise in building scalable machine learning
+solutions on Google Cloud Platform and multi-cloud environments. Proven track record in delivering big data
+solutions, implementing recommendation systems, and providing technical consulting to drive customer success.
+        `,
+        skills: () => `
+<span class="section-title">Technical Skills</span>
+<div class="progress-bar">
+    <span class="progress-bar-label">Python</span>
+    <div class="progress-bar-fill" style="width: 95%;"></div>
+</div>
+<div class="progress-bar">
+    <span class="progress-bar-label">GCP</span>
+    <div class="progress-bar-fill" style="width: 90%;"></div>
+</div>
+<div class="progress-bar">
+    <span class="progress-bar-label">TensorFlow</span>
+    <div class="progress-bar-fill" style="width: 85%;"></div>
+</div>
+<div class="progress-bar">
+    <span class="progress-bar-label">BigQuery</span>
+    <div class="progress-bar-fill" style="width: 80%;"></div>
+</div>
+<div class="progress-bar">
+    <span class="progress-bar-label">JavaScript</span>
+    <div class="progress-bar-fill" style="width: 75%;"></div>
+</div>
+        `,
+        experience: () => `
+<span class="section-title">Professional Experience</span>
+<div class="job">
+  <span class="job-title">ML Solutions Engineer & Technical Consultant</span> | Cognizant (Dec 2024 - Present)
+  <p>- Delivered AI-powered solutions for enterprise clients, achieving 30% improvement in development efficiency.</p>
+  <p>- Engineered Strategic Contract Manager solution for CVS Health using distributed architecture.</p>
+</div>
+<div class="job">
+  <span class="job-title">Data Science Consultant & ML Engineer</span> | UpWork (Dec 2024 - Present)
+  <p>- Built and deployed Python-based data pipelines and recommendation systems for e-commerce clients.</p>
+</div>
+<div class="job">
+  <span class="job-title">LLM Platform Engineer & AI Consultant</span> | yoopIQ (Jan 2024 - Mar 2024)
+  <p>- Resolved critical engineering challenges in distributed LLM deployment pipeline.</p>
+</div>
+        `,
+        projects: () => `
+<span class="section-title">Key ML Solutions & Consulting Projects</span>
+- <span class="project-title">Intelligent Content Recommendation System:</span> Developed advanced recommendation engine using LDA and Llama-3.2.
+- <span class="project-title">Enterprise Customer Intelligence Platform:</span> Architected AI-powered customer communication system with automated classification.
+- <span class="project-title">Distributed ML Analytics Platform:</span> Led team in developing distributed ML solution for network intrusion detection.
+        `,
+        education: () => `
+<span class="section-title">Education & Certifications</span>
+<div class="education-item">
+  <span class="degree">Bachelor of Technology in AI & Data Science</span>
+  <p>Jyothi Engineering College (Aug 2020 - May 2024)</p>
+</div>
+<div class="certification-item">
+  <span class="cert-title">In Progress: Google Cloud Professional Machine Learning Engineer</span>
+</div>
+        `,
+        contact: () => `
+<span class="section-title">Contact Information</span>
+- <span class="contact-label">Email:</span> <a href="mailto:jostencheeran@gmail.com">jostencheeran@gmail.com</a>
+- <span class="contact-label">LinkedIn:</span> <a href="https://linkedin.com/in/josten-s-cheeran" target="_blank">linkedin.com/in/josten-s-cheeran</a>
+- <span class="contact-label">Phone:</span> 7907935842
+        `,
+        clear: () => {
+            output.innerHTML = '';
+            return '';
         }
-      },
-      "bubble": {
-        "distance": 400,
-        "size": 40,
-        "duration": 2,
-        "opacity": 8,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 200,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
-    }
-  },
-  "retina_detect": true
-});
+    };
 
-// Sticky Header
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    header.classList.toggle('sticky', window.scrollY > 0);
-});
+    const executeCommand = (command) => {
+        const commandOutput = document.createElement('div');
+        commandOutput.classList.add('command-output');
 
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
+        const prompt = `<span class="prompt">josten@portfolio:~$</span> ${command}`;
+        const result = commands[command] ? commands[command]() : `Command not found: ${command}. Type 'help' for a list of commands.`;
 
-// Form Submission (you'll need to implement server-side handling)
-const form = document.querySelector('.contact-form');
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    form.reset();
-});
+        commandOutput.innerHTML = `${prompt}<div class="output-text">${result}</div>`;
+        output.appendChild(commandOutput);
+        terminal.scrollTop = terminal.scrollHeight;
+    };
 
-// Theme Switcher
-const themeSwitcher = document.querySelector('.theme-switcher i');
-themeSwitcher.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    if (document.body.classList.contains('dark-theme')) {
-        themeSwitcher.classList.remove('fa-moon');
-        themeSwitcher.classList.add('fa-sun');
-    } else {
-        themeSwitcher.classList.remove('fa-sun');
-        themeSwitcher.classList.add('fa-moon');
-    }
-});
-
-// Add animation to elements when they come into view
-const animateOnScroll = (entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-            observer.unobserve(entry.target);
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const command = input.value.trim().toLowerCase();
+            if (command) {
+                executeCommand(command);
+                input.value = '';
+            }
         }
     });
-};
 
-const observer = new IntersectionObserver(animateOnScroll, {
-    threshold: 0.1
-});
-
-document.querySelectorAll('.skill-card, .project-card').forEach(el => {
-    observer.observe(el);
+    const welcomeMessage = `
+<div class="ascii-art">
+   __ _ _   _ ___  ___ _ __
+  / _\` | | | / __|/ _ \\ '__|
+ | (_| | |_| \\__ \\  __/ |
+  \\__, |\\__,_|___/\\___|_|
+     |_|
+</div>
+Welcome to the portfolio of Josten S Cheeran.
+Type 'help' to see the available commands.
+    `;
+    output.innerHTML = welcomeMessage;
 });
